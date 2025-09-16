@@ -44,7 +44,7 @@ class Reviewer:
             if lint_result:
                 lint_feedback.append(f"📝 Formatage requis dans `{filename}`:\n{lint_result}")
 
-        message = "## 🤖 Code Review by DeepSeek\n\n"
+        message = "## 🤖 Code Review by code reviewer (by Boubker10)\n\n"
         message += ai_feedback
         if lint_feedback:
             message += "\n\n---\n\n" + "\n".join(lint_feedback)
