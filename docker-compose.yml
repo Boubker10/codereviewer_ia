@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  codereviewer:
+    build: .
+    container_name: codereviewer_bot
+    env_file: .env
+    restart: unless-stopped

@@ -3,7 +3,8 @@ name = "codereviewer"
 version = "0.1.0"
 description = "Un bot Discord + GitHub pour review automatique de PR"
 authors = ["Boubker BENNANI <boubker.bennani.pro@gmail.com>"]
-readme = "README.md"
+package-mode = false
+
 
 [tool.poetry.dependencies]
 python = "^3.11"
