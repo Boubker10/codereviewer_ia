@@ -1,10 +1,13 @@
-name: Daily PR Reviewer
+name: PR Reviewer
 
 on:
+  push:
+    branches:
+      - main
   schedule:
-    
-    - cron: "0 18 * * *"
+    - cron: "0 0 * * *"
   workflow_dispatch: 
+
 jobs:
   review:
     runs-on: ubuntu-latest
@@ -22,9 +25,9 @@ jobs:
         run: |
           echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" >> .env
           echo "CHANNEL_ID=${{ secrets.CHANNEL_ID }}" >> .env
-          echo "GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}" >> .env
+          echo "GIT_TOKEN=${{ secrets.GIT_TOKEN }}" >> .env
           echo "DEEPSEEK_API_KEY=${{ secrets.DEEPSEEK_API_KEY }}" >> .env
 
-      - name: Build and run
+      - name: Build and run with Docker Compose
         run: |
           docker compose up --build --abort-on-container-exit
