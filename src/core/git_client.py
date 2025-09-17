@@ -5,9 +5,9 @@ import requests
 class GitClient:
     def __init__(self, repo: str, token: str | None = None):
         self.repo = repo
-        self.token = token or os.getenv("GITHUB_TOKEN")
+        self.token = token or os.getenv("GIT_TOKEN")
         if not self.token:
-            raise ValueError("Aucun token GitHub fourni. Définis GITHUB_TOKEN dans ton .env")
+            raise ValueError("Aucun token GitHub fourni. Définis GIT_TOKEN dans ton .env")
         
         self.base_url = f"https://api.github.com/repos/{repo}"
         self.headers = {

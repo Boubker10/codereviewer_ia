@@ -9,8 +9,8 @@ load_dotenv()
 async def on_ready():
     print(f"sBot connecté en tant que {bot.user}")
 
-    repo_name = f"{os.getenv('GITHUB_USERNAME')}/repo_test_codereviewer"
-    github_token = os.getenv("GITHUB_TOKEN")
+    repo_name = f"{os.getenv('GIT_USERNAME')}/{os.getenv('GIT_REPO')}"
+    github_token = os.getenv("GIT_TOKEN")
     reviewer = Reviewer(repo_name, github_token)
 
     print("Analyse de toutes les PR ouvertes...")
