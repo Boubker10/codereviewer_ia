@@ -6,7 +6,7 @@ class GitClient:
     def __init__(self, repo: str | None = None, token: str | None = None):
         if not repo:
             owner = os.getenv("GIT_USERNAME")
-            name = os.getenv("GIT_repo")
+            name = os.getenv("GIT_REPO")
             if not owner or not name:
                 raise ValueError(
                     "GITHUB_REPO_OWNER ou GITHUB_REPO_NAME n'est pas défini dans les variables d'environnement."

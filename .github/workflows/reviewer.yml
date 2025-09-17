@@ -27,7 +27,7 @@ jobs:
           echo "CHANNEL_ID=${{ secrets.CHANNEL_ID }}" >> .env
           echo "GIT_TOKEN=${{ secrets.GIT_TOKEN }}" >> .env
           echo "GIT_USERNAME=${{ secrets.GIT_USERNAME}}" >> .env
-          echo "GIT_repo"=${{ secrets.GIT_repo}}" >> .env"
+          echo "GIT_REPO"=${{ secrets.GIT_REPO}}" >> .env"
           echo "DEEPSEEK_API_KEY=${{ secrets.DEEPSEEK_API_KEY }}" >> .env
 
       - name: Build and run with Docker Compose
