@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "codereviewer"
+version = "0.1.0"
+description = "Un bot Discord + GitHub pour review automatique de PR"
+authors = ["Boubker BENNANI <boubker.bennani.pro@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+"discord.py" = "^2.3.2"
+requests = "^2.31.0"
+python-dotenv = "^1.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4.2"
+flake8 = "^7.1.0"
+
+[tool.poetry.scripts]
+codereviewer = "main:main"
