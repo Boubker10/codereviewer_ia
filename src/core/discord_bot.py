@@ -5,13 +5,15 @@ from dotenv import load_dotenv
 load_dotenv()
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 CHANAL_ID = int(os.getenv("CHANNEL_ID"))
+USERNAME = os.getenv("GIT_USERNAME")
+REPO = os.getenv("GIT_REPO")
 
 intents = discord.Intents.default()
 intents.message_content = True
 bot = discord.Client(intents=intents)
 
 REPO_CHANNELS = {
-    "Boubker10/repo_test_codereviewer": CHANAL_ID,  
+    f"{USERNAME}/{REPO}": CHANAL_ID,  
 }
 
 async def send_pr_review(repo_name: str, pr_number: int, review_message: str):
