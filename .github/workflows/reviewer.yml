@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Install Docker Compose
         run: |
           sudo apt-get update
@@ -26,6 +26,8 @@ jobs:
           echo "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" >> .env
           echo "CHANNEL_ID=${{ secrets.CHANNEL_ID }}" >> .env
           echo "GIT_TOKEN=${{ secrets.GIT_TOKEN }}" >> .env
+          echo "GIT_USERNAME=${{ secrets.GIT_USERNAME}}" >> .env
+          echo "GIT_repo"=${{ secrets.GIT_repo}}" >> .env"
           echo "DEEPSEEK_API_KEY=${{ secrets.DEEPSEEK_API_KEY }}" >> .env
 
       - name: Build and run with Docker Compose
