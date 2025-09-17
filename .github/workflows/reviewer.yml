@@ -34,6 +34,5 @@ jobs:
       - name: Build and run with Docker Compose
         run: |
           docker compose up --build --abort-on-container-exit
-          
-      - name: Run bot once and exit
-        run: docker compose run --rm codereviewer_bot
+          sleep 120 
+          docker compose down 

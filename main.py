@@ -17,5 +17,6 @@ async def on_ready():
     await reviewer.analyze_all_open_prs(post_to_github=True, post_to_discord=True)
     # await reviewer.analyze_pr(pr_number=3, post_to_github=True, post_to_discord=True)
     print("💡 Reviews postées. Le bot reste actif pour les prochaines PR.")
+    await bot.close()
 
 bot.run(os.getenv("DISCORD_TOKEN"))
