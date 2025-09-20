@@ -69,14 +69,16 @@ class Reviewer:
         message = "## 🤖 Code Review by CodeReviewerIA\n\n" + ai_feedback
         if lint_feedback:
             message += "\n\n---\n\n" + "\n".join(lint_feedback)
+        
+        message_with_signature = message + "\n\n<!-- reviewed-by-codereviewer-ia -->"
 
         if post_to_github:
-            self.client.comment_on_pr(pr_number, message)
+            self.client.comment_on_pr(pr_number, message_with_signature)
 
         if post_to_discord:
-            await send_pr_review(self.repo, pr_number, message)
+            await send_pr_review(self.repo, pr_number, message_with_signature)
 
-        return message
+        return message_with_signature
 
     async def analyze_all_open_prs(self, post_to_github: bool = True, post_to_discord: bool = True):
         prs = self.client.list_open_pull_requests()
