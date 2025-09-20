@@ -47,7 +47,7 @@ class Reviewer:
 
         - ✅ Strengths
         - ⚠️ Issues
-        - 💡 Suggestions
+        - 💡 Suggestions ( always give a code suggestions)
 
         Respond **in Markdown format**, **concise**, **under 1500 characters**, so it can be posted directly on Discord.
 

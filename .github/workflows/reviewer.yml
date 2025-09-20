@@ -16,6 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Python & Black
+        run: |
+          python -m pip install --upgrade pip
+          pip install black
+          
       - name: Install Docker Compose
         run: |
           sudo apt-get update
