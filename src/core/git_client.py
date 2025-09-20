@@ -36,12 +36,24 @@ class GitClient:
         response.raise_for_status()
         return response.json()
 
+    def has_already_reviewed(self, pr_number: int) -> bool:
+        url = f"{self.base_url}/issues/{pr_number}/comments"
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        comments = response.json()
+        for c in comments:
+            if "<!-- reviewed-by-codereviewer-ia -->" in c["body"]:
+                return True
+        return False
+
     def comment_on_pr(self, pr_number: int, body: str):
+        body = f"{body}\n\n<!-- reviewed-by-codereviewer-ia -->"
         url = f"{self.base_url}/issues/{pr_number}/comments"
         data = {"body": body}
         response = requests.post(url, headers=self.headers, json=data)
         response.raise_for_status()
         return response.json()
+
 
     def list_open_pull_requests(self):
         url = f"{self.base_url}/pulls?state=open"

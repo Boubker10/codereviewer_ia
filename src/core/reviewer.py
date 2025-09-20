@@ -17,6 +17,17 @@ class Reviewer:
         self.deepseek = DeepSeekClient(api_key=os.getenv("DEEPSEEK_API_KEY"))
 
     async def analyze_pr(self, pr_number: int, post_to_github: bool = True, post_to_discord: bool = True):
+        pr_url = f"https://github.com/{self.repo}/pull/{pr_number}"
+        if self.client.has_already_reviewed(pr_number):
+            print(f"⏩ PR #{pr_number} déjà traitée, on ignore.")
+
+            if post_to_discord:
+                await send_pr_review(
+                    self.repo,
+                    pr_number,
+                    f"⚠️ PR #{pr_number} a déjà été reviewée par CodeReviewerIA.\n👉 Consultez la review ici : {pr_url}"
+                )
+            return None
         files = self.client.get_pull_request_files(pr_number)
 
         diffs = []
