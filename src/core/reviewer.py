@@ -85,7 +85,7 @@ class Reviewer:
         if not prs : 
             print("Aucune pull request ouverte trouvé")
             if post_to_discord :
-                await send_pr_review(self,repo,0,"🚫 Aucune pull request ouverte trouvée.")
+                await send_pr_review(self.repo,0,"🚫 Aucune pull request ouverte trouvée.")
         for pr in prs:
             pr_number = pr["number"]
             print(f"Analyse PR #{pr_number}")
