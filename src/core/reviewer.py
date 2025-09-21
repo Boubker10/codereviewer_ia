@@ -82,6 +82,10 @@ class Reviewer:
 
     async def analyze_all_open_prs(self, post_to_github: bool = True, post_to_discord: bool = True):
         prs = self.client.list_open_pull_requests()
+        if not prs : 
+            print("Aucune pull request ouverte trouvé")
+            if post_to_discord :
+                await send_pr_review(self,repo,0,"🚫 Aucune pull request ouverte trouvée.")
         for pr in prs:
             pr_number = pr["number"]
             print(f"Analyse PR #{pr_number}")
